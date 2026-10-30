@@ -1,18 +1,13 @@
-# Contributing to Netcup Toolbox
+# Contributing
 
-We welcome sysadmin scripts, benchmark logs (YABS), and documentation improvements.
+## Submitting scripts
+1. Place script under `tools/<name>.sh`.
+2. Must run under `bash` or `sh` without third-party dependencies.
+3. Include usage instructions at the top of the file.
 
-## Adding a New Tool
-1. Place your script under `tools/<tool-name>.sh`.
-2. Ensure the script is POSIX or Bash compliant, has a `--help` flag or clean usage instructions, and does not require proprietary dependencies.
-3. Add a section in `README.md` describing the tool and its usage.
-
-## Submitting Benchmark Logs
-1. Run [YABS](https://github.com/masonr/yet-another-bench-script):
+## Submitting benchmark data
+1. Run YABS on a clean instance:
    ```bash
    curl -sL yabs.sh | bash
    ```
-2. Open an issue or Pull Request updating `data/benchmarks.json`.
-
-## Code of Conduct
-Please keep discussions technical, respectful, and fact-based.
+2. Submit a PR or open an issue with the raw output to update `data/benchmarks.json`.

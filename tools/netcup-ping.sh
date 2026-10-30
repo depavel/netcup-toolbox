@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-# ==============================================================================
-# Netcup Datacenter Latency Ping Tool
-# Measures round-trip ICMP network latency to all 5 official Netcup datacenters.
+# Netcup Datacenter Latency Probe (ICMP)
 # Repository: https://github.com/depavel/netcup-toolbox
-# Live Web Map: https://netcupgutscheine.com
-# ==============================================================================
+# Web: https://netcupgutscheine.com
 
 set -euo pipefail
 
@@ -15,9 +12,8 @@ CYAN="\033[36m"
 RED="\033[31m"
 RESET="\033[0m"
 
-echo -e "${BOLD}====================================================================${RESET}"
-echo -e "${BOLD}  Netcup Datacenter Latency Probe (ICMP 3-Packet Average)${RESET}"
-echo -e "${BOLD}====================================================================${RESET}"
+echo "Netcup Datacenter Latency Probe (ICMP 3-packet average)"
+echo "--------------------------------------------------------------------"
 printf "%-18s %-16s %-10s %-10s %-10s %-8s\n" "Location" "Test IP" "Min" "Avg" "Max" "Loss"
 echo "--------------------------------------------------------------------"
 
@@ -31,7 +27,6 @@ DATACENTERS=(
 
 for entry in "${DATACENTERS[@]}"; do
   IFS="|" read -r NAME IP <<< "$entry"
-
   PING_OUTPUT=$(ping -c 3 -W 2 "$IP" 2>&1 || true)
 
   if echo "$PING_OUTPUT" | grep -q "min/avg/max"; then
@@ -55,6 +50,5 @@ for entry in "${DATACENTERS[@]}"; do
 done
 
 echo "--------------------------------------------------------------------"
-echo -e "Interactive Map & Precision VAT Calculator: ${CYAN}https://netcupgutscheine.com${RESET}"
-echo -e "Repository: ${CYAN}https://github.com/depavel/netcup-toolbox${RESET}"
+echo "Web tools (interactive map, VAT calculator): https://netcupgutscheine.com"
 echo ""
