@@ -16,11 +16,11 @@ API_URL="https://ccp.netcup.net/run/webservice/servers/endpoint.php?JSON"
 
 if [ -z "$CUSTOMER_NUMBER" ] || [ -z "$API_KEY" ] || [ -z "$API_PASSWORD" ] || [ -z "$DOMAIN_NAME" ]; then
   echo "Usage:" >&2
-  echo "  NETCUP_CUSTOMER_NUMBER=123456 \" >&2
-  echo "  NETCUP_API_KEY=xxx \" >&2
-  echo "  NETCUP_API_PASSWORD=yyy \" >&2
-  echo "  NETCUP_DOMAIN_NAME=example.com \" >&2
-  echo "  NETCUP_HOST_NAME=subdomain \" >&2
+  echo "  NETCUP_CUSTOMER_NUMBER=123456" >&2
+  echo "  NETCUP_API_KEY=xxx" >&2
+  echo "  NETCUP_API_PASSWORD=yyy" >&2
+  echo "  NETCUP_DOMAIN_NAME=example.com" >&2
+  echo "  NETCUP_HOST_NAME=subdomain" >&2
   echo "  ./netcup-dns-sync.sh" >&2
   exit 1
 fi
@@ -41,7 +41,7 @@ LOGIN_PAYLOAD=$(jq -n \
   --arg apipassword "$API_PASSWORD" \
   '{action: $action, param: {customernumber: $customernumber, apikey: $apikey, apipassword: $apipassword}}')
 
-LOGIN_RES=$(curl -s -X POST "$API_URL" -H "Content-Type: application/json" -d "$LOGIN_PAYLOAD")
+LOGIN_RES=$(printf '%s' "$LOGIN_PAYLOAD" | curl -s -X POST "$API_URL" -H "Content-Type: application/json" --data-binary @-)
 STATUS=$(echo "$LOGIN_RES" | jq -r '.status // empty')
 
 if [ "$STATUS" != "SUCCESS" ]; then
@@ -58,7 +58,7 @@ cleanup() {
     --arg apikey "$API_KEY" \
     --arg apisessionid "$SESSION_ID" \
     '{action: $action, param: {customernumber: $customernumber, apikey: $apikey, apisessionid: $apisessionid}}')
-  curl -s -X POST "$API_URL" -H "Content-Type: application/json" -d "$LOGOUT_PAYLOAD" > /dev/null || true
+  printf '%s' "$LOGOUT_PAYLOAD" | curl -s -X POST "$API_URL" -H "Content-Type: application/json" --data-binary @- > /dev/null || true
 }
 trap cleanup EXIT
 
@@ -70,7 +70,7 @@ INFO_PAYLOAD=$(jq -n \
   --arg domainname "$DOMAIN_NAME" \
   '{action: $action, param: {customernumber: $customernumber, apikey: $apikey, apisessionid: $apisessionid, domainname: $domainname}}')
 
-INFO_RES=$(curl -s -X POST "$API_URL" -H "Content-Type: application/json" -d "$INFO_PAYLOAD")
+INFO_RES=$(printf '%s' "$INFO_PAYLOAD" | curl -s -X POST "$API_URL" -H "Content-Type: application/json" --data-binary @-)
 TARGET_RECORD=$(echo "$INFO_RES" | jq --arg host "$HOST_NAME" '.responsedata.dnsrecords[] | select(.hostname == $host and .type == "A")')
 
 if [ -z "$TARGET_RECORD" ]; then
@@ -97,7 +97,7 @@ UPDATE_PAYLOAD=$(jq -n \
   --arg destination "$CURRENT_IP" \
   '{action: $action, param: {customernumber: $customernumber, apikey: $apikey, apisessionid: $apisessionid, domainname: $domainname, dnsrecords: [{id: $id, hostname: $hostname, type: "A", destination: $destination}]}}')
 
-UPDATE_RES=$(curl -s -X POST "$API_URL" -H "Content-Type: application/json" -d "$UPDATE_PAYLOAD")
+UPDATE_RES=$(printf '%s' "$UPDATE_PAYLOAD" | curl -s -X POST "$API_URL" -H "Content-Type: application/json" --data-binary @-)
 UPDATE_STATUS=$(echo "$UPDATE_RES" | jq -r '.status // empty')
 
 if [ "$UPDATE_STATUS" != "SUCCESS" ]; then
