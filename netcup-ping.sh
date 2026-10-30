@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Netcup Datacenter Latency Probe (ICMP)
 # Repository: https://github.com/depavel/netcup-toolbox
-# Web: https://netcupgutscheine.com
+# Web tools: https://netcupgutscheine.com/en/tools#ping
 
 set -euo pipefail
 
@@ -50,5 +50,5 @@ for entry in "${DATACENTERS[@]}"; do
 done
 
 echo "--------------------------------------------------------------------"
-echo "Web tools (interactive map, VAT calculator): https://netcupgutscheine.com"
+echo "Web tools (interactive map, VAT calculator): https://netcupgutscheine.com/en/tools"
 echo ""

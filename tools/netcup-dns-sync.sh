@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Netcup Dynamic DNS (DDNS) Updater
 # Updates an A record via Netcup CCP JSON API.
+# Repository: https://github.com/depavel/netcup-toolbox
+# Web tools: https://netcupgutscheine.com/en/tools#ddns
 # Requirements: curl, jq
 
 set -euo pipefail
@@ -104,3 +106,4 @@ if [ "$UPDATE_STATUS" != "SUCCESS" ]; then
 fi
 
 echo "Updated $HOST_NAME.$DOMAIN_NAME to $CURRENT_IP"
+echo "Interactive tools & guides: https://netcupgutscheine.com/en/tools"
