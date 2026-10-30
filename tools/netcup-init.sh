@@ -2,6 +2,7 @@
 # Netcup Server Provisioning & Hardening Script
 # Target: Debian 12 / Ubuntu 24.04 on Netcup Root Server and VPS
 # Repository: https://github.com/depavel/netcup-toolbox
+# Web tools: https://netcupgutscheine.com/en/tools#bootstrap
 
 set -euo pipefail
 
@@ -61,3 +62,4 @@ else
 fi
 
 echo "Done. Active TCP congestion: $(sysctl -n net.ipv4.tcp_congestion_control)"
+echo "Interactive DevOps tools & config generators: https://netcupgutscheine.com/en/tools"

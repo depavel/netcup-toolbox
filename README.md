@@ -2,13 +2,17 @@
 
 Shell scripts, hardware benchmarks, and network reference data for netcup GmbH cloud infrastructure (Root Server G12.5, VPS, and vGPU instances).
 
+Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and raw benchmark datasets.
+
 ## Tools
 
-| Script | Description | One-line run |
-|---|---|---|
-| `tools/netcup-ping.sh` | Tests ICMP round-trip latency to all 5 netcup datacenters | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-ping.sh \| bash` |
-| `tools/netcup-init.sh` | Configures TCP BBR, NVMe sysctl, UFW firewall, and installs Docker | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-init.sh \| sudo bash -s -- --with-docker` |
-| `tools/netcup-dns-sync.sh` | Dynamic DNS (DDNS) client for the netcup CCP JSON DNS API | `bash tools/netcup-dns-sync.sh` |
+| Script | Description | One-line run | Web GUI |
+|---|---|---|---|
+| `tools/netcup-ping.sh` | Tests ICMP round-trip latency to all 5 netcup datacenters | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-ping.sh \| bash` | [Live Latency Map](https://netcupgutscheine.com/en/tools#ping) |
+| `tools/netcup-init.sh` | Configures TCP BBR, NVMe sysctl, UFW firewall, and installs Docker | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-init.sh \| sudo bash -s -- --with-docker` | [Bootstrap Config](https://netcupgutscheine.com/en/tools#bootstrap) |
+| `tools/netcup-vlan.sh` | Netplan & Debian configuration generator for Cloud vLAN (2.5 Gbps) | `bash tools/netcup-vlan.sh --interface eth1 --ip 10.0.10.1/24 --mtu 9000` | [Interactive Generator](https://netcupgutscheine.com/en/tools#vlan) |
+| `tools/netcup-dns-sync.sh` | Dynamic DNS (DDNS) client for the netcup CCP JSON DNS API | `bash tools/netcup-dns-sync.sh` | [DDNS Guide](https://netcupgutscheine.com/en/tools#ddns) |
+| `tools/netcup-calc.sh` | Terminal 5-region VAT and billing price calculator | `bash tools/netcup-calc.sh` | [VAT Calculator](https://netcupgutscheine.com/en/tools#calc) |
 
 ---
 
@@ -50,6 +54,18 @@ curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/ne
 
 ---
 
+## Cloud vLAN configuration (netcup-vlan.sh)
+
+Generates production Netplan or Debian network configuration for internal 2.5 Gbps communication between servers in the same datacenter:
+
+```bash
+bash tools/netcup-vlan.sh --interface eth1 --ip 10.0.10.1/24 --mtu 9000
+```
+
+An interactive web version is available at [https://netcupgutscheine.com/en/tools#vlan](https://netcupgutscheine.com/en/tools#vlan).
+
+---
+
 ## Dynamic DNS (netcup-dns-sync.sh)
 
 Updates an A record via netcup's official CCP DNS API for dynamic IP connections:
@@ -62,6 +78,16 @@ export NETCUP_DOMAIN_NAME="example.com"
 export NETCUP_HOST_NAME="vpn"
 
 bash tools/netcup-dns-sync.sh
+```
+
+---
+
+## Terminal pricing & VAT calculator (netcup-calc.sh)
+
+Calculates net and gross prices for all 15 Netcup server plans using the official half-up rounding rule across 5 tax regions:
+
+```bash
+bash tools/netcup-calc.sh
 ```
 
 ---
@@ -157,9 +183,11 @@ Official Netcup IPv4 addresses used for routing and latency measurement:
 
 ## Interactive tools
 
-Interactive tools are hosted at [https://netcupgutscheine.com](https://netcupgutscheine.com):
-- Live ICMP datacenter latency monitor: [https://netcupgutscheine.com](https://netcupgutscheine.com)
-- VAT calculator (0% non-EU, 0% reverse charge, 19% DE, 20% AT, 23% PL): [https://netcupgutscheine.com](https://netcupgutscheine.com)
+Interactive tools are hosted at [https://netcupgutscheine.com/en/tools](https://netcupgutscheine.com/en/tools):
+- DevOps Toolbox: [https://netcupgutscheine.com/en/tools](https://netcupgutscheine.com/en/tools)
+- Live ICMP datacenter latency monitor: [https://netcupgutscheine.com/en/tools#ping](https://netcupgutscheine.com/en/tools#ping)
+- Cloud vLAN Netplan generator: [https://netcupgutscheine.com/en/tools#vlan](https://netcupgutscheine.com/en/tools#vlan)
+- VAT calculator (0% non-EU, 0% reverse charge, 19% DE, 20% AT, 23% PL): [https://netcupgutscheine.com/en/tools#calc](https://netcupgutscheine.com/en/tools#calc)
 - Interactive server matcher: [https://netcupgutscheine.com/en/wizard](https://netcupgutscheine.com/en/wizard)
 
 ## Contributing
