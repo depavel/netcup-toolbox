@@ -4,12 +4,14 @@ Shell scripts, hardware benchmarks, and network reference data for netcup GmbH c
 
 Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and raw benchmark datasets.
 
+> Review every script before running it. The DNS updater reads credentials from environment variables and never writes them to disk or logs. Prefer a pinned commit or release over `main` for production automation.
+
 ## Tools
 
-| Script | Description | One-line run | Web GUI |
+| Script | Description | Run after clone | Web GUI |
 |---|---|---|---|
-| `tools/netcup-ping.sh` | Tests ICMP round-trip latency to all 5 netcup datacenters | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-ping.sh \| bash` | [Live Latency Map](https://netcupgutscheine.com/en/tools#ping) |
-| `tools/netcup-init.sh` | Configures TCP BBR, NVMe sysctl, UFW firewall, and installs Docker | `curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-init.sh \| sudo bash -s -- --with-docker` | [Bootstrap Config](https://netcupgutscheine.com/en/tools#bootstrap) |
+| `tools/netcup-ping.sh` | Tests ICMP round-trip latency to all 5 netcup datacenters | `bash tools/netcup-ping.sh` | [Live Latency Map](https://netcupgutscheine.com/en/tools#ping) |
+| `tools/netcup-init.sh` | Configures TCP BBR, NVMe sysctl, UFW firewall, and installs Docker | `sudo bash tools/netcup-init.sh --with-docker` | [Bootstrap Config](https://netcupgutscheine.com/en/tools#bootstrap) |
 | `tools/netcup-vlan.sh` | Netplan & Debian configuration generator for Cloud vLAN (2.5 Gbps) | `bash tools/netcup-vlan.sh --interface eth1 --ip 10.0.10.1/24 --mtu 9000` | [Interactive Generator](https://netcupgutscheine.com/en/tools#vlan) |
 | `tools/netcup-dns-sync.sh` | Dynamic DNS (DDNS) client for the netcup CCP JSON DNS API | `bash tools/netcup-dns-sync.sh` | [DDNS Guide](https://netcupgutscheine.com/en/tools#ddns) |
 | `tools/netcup-calc.sh` | Terminal 5-region VAT and billing price calculator | `bash tools/netcup-calc.sh` | [VAT Calculator](https://netcupgutscheine.com/en/tools#calc) |
@@ -20,8 +22,12 @@ Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/
 
 Runs 3 ICMP ping packets to the verified test nodes and outputs min/avg/max latency and packet loss:
 
+Download the script, review it, then run it:
+
 ```bash
-curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-ping.sh | bash
+curl -fsSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
+less /tmp/netcup-ping.sh
+bash /tmp/netcup-ping.sh
 ```
 
 ```text
@@ -48,8 +54,12 @@ Applies performance and security defaults on a fresh Debian 12 / Ubuntu 24.04 in
 - Activates `unattended-upgrades` for automated security patches.
 - Installs official Docker Engine and Compose plugin when called with `--with-docker`.
 
+Download the script, review it, then run it with root:
+
 ```bash
-curl -sSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-init.sh | sudo bash -s -- --with-docker
+curl -fsSL https://raw.githubusercontent.com/depavel/netcup-toolbox/main/tools/netcup-init.sh -o /tmp/netcup-init.sh
+less /tmp/netcup-init.sh
+sudo bash /tmp/netcup-init.sh --with-docker
 ```
 
 ---
