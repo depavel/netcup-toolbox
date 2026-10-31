@@ -132,7 +132,7 @@
     "ramGb": 16,
     "storage": "512 GB NVMe",
     "port": "2.5 Gbit/s",
-    "netPriceEur": 115.39,
+    "netPriceEur": 102.3277,
     "promoLabel": "€5 Instant Discount",
     "isBestseller": false,
     "benchmarks": {
@@ -156,7 +156,7 @@
     "ramGb": 32,
     "storage": "1 TB NVMe",
     "port": "2.5 Gbit/s",
-    "netPriceEur": 219.66,
+    "netPriceEur": 195.3193,
     "promoLabel": "€5 Instant Discount",
     "isBestseller": false,
     "benchmarks": {
@@ -348,7 +348,7 @@
     "ramGb": 4,
     "storage": "150 GB SSD (3 Free Domains)",
     "port": "1 Gbit/s",
-    "netPriceEur": 3.39,
+    "netPriceEur": 3.3865,
     "promoLabel": "30% Lifetime Discount",
     "isBestseller": false,
     "benchmarks": null
@@ -366,7 +366,7 @@
     "ramGb": 4,
     "storage": "500 GB SSD (6 Free Domains)",
     "port": "1 Gbit/s",
-    "netPriceEur": 6.81,
+    "netPriceEur": 6.8067,
     "promoLabel": "30% Lifetime Discount",
     "isBestseller": false,
     "benchmarks": null
@@ -384,7 +384,7 @@
     "ramGb": 8,
     "storage": "1000 GB SSD (12 Free Domains)",
     "port": "1 Gbit/s",
-    "netPriceEur": 11.07,
+    "netPriceEur": 11.0672,
     "promoLabel": "30% Lifetime Discount",
     "isBestseller": false,
     "benchmarks": null

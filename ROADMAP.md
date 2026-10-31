@@ -1,6 +1,6 @@
 # Roadmap
 
-Current release: [v0.2.1](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.1).
+Current release: [v0.2.2](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.2).
 
 ## Current tools
 - `tools/netcup-ping.sh`: ICMP latency test for the 5 official looking glass nodes; iputils and BusyBox parsing.

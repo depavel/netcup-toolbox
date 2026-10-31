@@ -4,14 +4,14 @@ Shell scripts, aggregated YABS results, and network reference data for netcup Gm
 
 Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and benchmark datasets.
 
-**Release:** [v0.2.1](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.1) · **License:** MIT · **Scope:** 18 active plans, 14 benchmarked plans.
+**Release:** [v0.2.2](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.2) · **License:** MIT · **Scope:** 18 active plans, 14 benchmarked plans.
 
 > Review every script before running it. The DNS updater reads credentials from environment variables and never writes them to disk or logs. Use the pinned release tag below for production automation, not `main`.
 
 ## Verify the release
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.1/CHECKSUMS.txt -o CHECKSUMS.txt
+curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.2/CHECKSUMS.txt -o CHECKSUMS.txt
 sha256sum -c CHECKSUMS.txt
 ```
 
@@ -37,7 +37,7 @@ Runs 3 ICMP probes per datacenter and prints min/avg/max latency and packet loss
 - BusyBox: `round-trip min/avg/max = ...`
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.1/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.2/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
 less /tmp/netcup-ping.sh
 bash /tmp/netcup-ping.sh
 ```
@@ -76,7 +76,7 @@ Applies performance and security defaults on a fresh Debian 12 / Ubuntu 24.04 in
 - installs Docker only with `--with-docker`.
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.1/tools/netcup-init.sh -o /tmp/netcup-init.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.2/tools/netcup-init.sh -o /tmp/netcup-init.sh
 less /tmp/netcup-init.sh
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --dry-run
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --yes
@@ -167,8 +167,8 @@ The table covers all 18 active plans. Non-EU and EU business customers (B2B reve
 | RS 2000 G12.5 | 16 GB | 256 GB NVMe | 2.5 Gbit/s | €34.20 | €40.70 | €42.07 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-2000-g12-5) |
 | RS 4000 G12.5 | 32 GB | 512 GB NVMe | 2.5 Gbit/s | €65.40 | €77.83 | €80.45 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-4000-g12-5) |
 | RS 8000 G12.5 | 64 GB | 1 TB NVMe | 2.5 Gbit/s | €124.72 | €148.42 | €153.41 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-8000-g12-5) |
-| RS 2000 vGPU 7 | 16 GB | 512 GB NVMe | 2.5 Gbit/s | €115.39 | €137.32 | €141.93 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-2000-vgpu-7) |
-| RS 4000 vGPU 14 | 32 GB | 1 TB NVMe | 2.5 Gbit/s | €219.66 | €261.40 | €270.19 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-4000-vgpu-14) |
+| RS 2000 vGPU 7 | 16 GB | 512 GB NVMe | 2.5 Gbit/s | €102.33 | €121.77 | €125.87 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-2000-vgpu-7) |
+| RS 4000 vGPU 14 | 32 GB | 1 TB NVMe | 2.5 Gbit/s | €195.32 | €232.43 | €240.25 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-4000-vgpu-14) |
 | VPS piko / nano G11s | 2 GB | 30 GB SSD | 1 Gbit/s | €2.99 | €3.56 | €3.68 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-nano-g11s) |
 | VPS 500 G12.5 | 4 GB | 64 GB SSD | 2.5 Gbit/s | €6.94 | €8.26 | €8.54 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-500-g12-5) |
 | VPS 1000 G12.5 | 8 GB | 128 GB SSD | 2.5 Gbit/s | €12.18 | €14.50 | €14.99 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-1000-g12-5) |
@@ -176,9 +176,9 @@ The table covers all 18 active plans. Non-EU and EU business customers (B2B reve
 | VPS 2000 G12.5 | 16 GB | 256 GB SSD | 2.5 Gbit/s | €22.62 | €26.92 | €27.83 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-2000-g12-5) |
 | VPS 4000 G12.5 | 32 GB | 512 GB SSD | 2.5 Gbit/s | €38.11 | €45.36 | €46.88 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-4000-g12-5) |
 | VPS 8000 G12.5 | 64 GB | 1 TB SSD | 2.5 Gbit/s | €56.39 | €67.11 | €69.36 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-8000-g12-5) |
-| Webhosting 2000 | 4 GB | 150 GB SSD (3 Free Domains) | 1 Gbit/s | €3.39 | €4.04 | €4.17 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-2000) |
-| Webhosting 4000 | 4 GB | 500 GB SSD (6 Free Domains) | 1 Gbit/s | €6.81 | €8.11 | €8.38 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-4000) |
-| Webhosting 8000 | 8 GB | 1000 GB SSD (12 Free Domains) | 1 Gbit/s | €11.07 | €13.18 | €13.62 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-8000) |
+| Webhosting 2000 | 4 GB | 150 GB SSD (3 Free Domains) | 1 Gbit/s | €3.39 | €4.03 | €4.17 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-2000) |
+| Webhosting 4000 | 4 GB | 500 GB SSD (6 Free Domains) | 1 Gbit/s | €6.81 | €8.10 | €8.38 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-4000) |
+| Webhosting 8000 | 8 GB | 1000 GB SSD (12 Free Domains) | 1 Gbit/s | €11.07 | €13.17 | €13.62 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-8000) |
 | Webhosting 2000 30Prozent Rabatt NUE 1M | 4 GB | 150 GB SSD (75 GB Web + 75 GB Mail, 3 Free Domains) | 1 Gbit/s | €2.37 | €2.82 | €2.92 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/webhosting-2000-30prozent-rabatt-nue-1m) |
 
 ---

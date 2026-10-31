@@ -2,6 +2,17 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.2.2 - 2026-10-31
+
+### Fixed
+
+- vGPU catalogue prices now match the official Netcup cards: RS 2000 vGPU 7
+  starts at EUR 121.77 gross, RS 4000 vGPU 14 at EUR 232.43 gross.
+- Webhosting 2000/4000/8000 use the exact net base so the calculated gross
+  price matches Netcup's EUR 4.03/8.10/13.17.
+- The calculator self-test now asserts the official Webhosting 4000 value
+  (EUR 8.10), not the previous EUR 8.11.
+
 ## 0.2.1 - 2026-10-31
 
 ### Fixed
