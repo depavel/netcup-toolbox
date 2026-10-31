@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Bash syntax
+        run: |
+          for file in tools/*.sh; do
+            bash -n "$file"
+          done
+
+      - name: ShellCheck
+        run: shellcheck --severity=warning tools/*.sh
+
+      - name: Built-in self-tests
+        run: |
+          bash tools/netcup-ping.sh --self-test
+          bash tools/netcup-calc.sh --self-test
+
+      - name: JSON validation
+        run: |
+          for file in data/*.json; do
+            jq empty "$file"
+          done
+
+      - name: Verify release checksums
+        run: sha256sum -c CHECKSUMS.txt
