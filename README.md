@@ -4,14 +4,14 @@ Shell scripts, aggregated YABS results, and network reference data for netcup Gm
 
 Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and benchmark datasets.
 
-**Release:** [v0.2.3](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.3) · **License:** MIT · **Scope:** 18 active plans, 14 benchmarked plans.
+**Release:** [v0.2.4](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.4) · **License:** MIT · **Scope:** 19 active plans, 14 benchmarked plans.
 
 > Review every script before running it. The DNS updater reads credentials from environment variables and never writes them to disk or logs. Use the pinned release tag below for production automation, not `main`.
 
 ## Verify the release
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.3/CHECKSUMS.txt -o CHECKSUMS.txt
+curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.4/CHECKSUMS.txt -o CHECKSUMS.txt
 sha256sum -c CHECKSUMS.txt
 ```
 
@@ -37,7 +37,7 @@ Runs 3 ICMP probes per datacenter and prints min/avg/max latency and packet loss
 - BusyBox: `round-trip min/avg/max = ...`
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.3/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.4/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
 less /tmp/netcup-ping.sh
 bash /tmp/netcup-ping.sh
 ```
@@ -76,7 +76,7 @@ Applies performance and security defaults on a fresh Debian 12 / Ubuntu 24.04 in
 - installs Docker only with `--with-docker`.
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.3/tools/netcup-init.sh -o /tmp/netcup-init.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.4/tools/netcup-init.sh -o /tmp/netcup-init.sh
 less /tmp/netcup-init.sh
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --dry-run
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --yes
@@ -119,7 +119,7 @@ Credentials are read from the environment and are never written to disk or print
 
 ## Terminal pricing and VAT (`netcup-calc.sh`)
 
-Calculates net and gross prices for all 18 active plans. Netcup rounds gross prices **up to the next cent** when VAT is greater than 0%; the 0% regions keep the exact net price. This was verified against the official netcup.com RS 500 G12.5 card on 2026-10-31: EUR 10.86 net × 1.19 = EUR 12.9234 → **EUR 12.93**.
+Calculates net and gross prices for all 19 active plans. Netcup rounds gross prices **up to the next cent** when VAT is greater than 0%; the 0% regions keep the exact net price. This was verified against the official netcup.com RS 500 G12.5 card on 2026-10-31: EUR 10.86 net × 1.19 = EUR 12.9234 → **EUR 12.93**.
 
 ```bash
 bash tools/netcup-calc.sh
@@ -141,7 +141,7 @@ Aggregated YABS results for 14 active plans, generated from our official Netcup 
 | RS 8000 G12.5 | 16 Dedicated Cores (AMD EPYC 9645) | 2305 | 21940 | 204.0k IOPS (816 MB/s) | 0.0% |
 | RS 2000 vGPU 7 | 8 Dedicated Cores (AMD EPYC 9535) + NVIDIA H200 (7 GB VRAM) | 2210 | 12400 | 195.0k IOPS (780 MB/s) | 0.0% |
 | RS 4000 vGPU 14 | 12 Dedicated Cores (AMD EPYC 9535) + NVIDIA H200 (14 GB VRAM) | 2225 | 17200 | 202.0k IOPS (808 MB/s) | 0.0% |
-| VPS nano G11.5s | 2 vCores (Low-Cost Node) | 980 | 1450 | 45.0k IOPS (180 MB/s) | 1.8% |
+| VPS pico G11.5s | 1 vCore (Low-Cost Node) | 980 | 1450 | 45.0k IOPS (180 MB/s) | 1.8% |
 | VPS 500 G12.5 | 2 vCores (x86) | 1710 | 2890 | 115.0k IOPS (460 MB/s) | 1.4% |
 | VPS 1000 G12.5 | 4 vCores (x86) | 1720 | 4650 | 130.0k IOPS (520 MB/s) | 1.2% |
 | VPS 1000 ARM G12.5 | 4 ARM64 vCores | 1020 | 4980 | 142.0k IOPS (568 MB/s) | 0.4% |
@@ -158,7 +158,7 @@ Notes:
 
 ## Server specifications and multi-region pricing
 
-The table covers all 18 active plans. Non-EU and EU business customers (B2B reverse charge) pay the net price; German consumers pay 19% VAT; Polish consumers pay 23% VAT. Archived G11/G12 plans are documented on the site but are excluded from this active-plan dataset.
+The table covers all 19 active plans. Non-EU and EU business customers (B2B reverse charge) pay the net price; German consumers pay 19% VAT; Polish consumers pay 23% VAT. Archived G11/G12 plans are documented on the site but are excluded from this active-plan dataset.
 
 | Plan | RAM | Storage | Port | 0% VAT (Non-EU / EU B2B) | 19% DE | 23% PL | Details |
 |---|---|---|---|---|---|---|---|
@@ -170,6 +170,7 @@ The table covers all 18 active plans. Non-EU and EU business customers (B2B reve
 | RS 2000 vGPU 7 | 16 GB | 512 GB NVMe | 2.5 Gbit/s | €102.33 | €121.77 | €125.87 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-2000-vgpu-7) |
 | RS 4000 vGPU 14 | 32 GB | 1 TB NVMe | 2.5 Gbit/s | €195.32 | €232.43 | €240.25 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/rs-4000-vgpu-14) |
 | VPS nano G11.5s | 2 GB | 60 GB SSD | 1 Gbit/s | €3.10 | €3.69 | €3.82 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-nano-g11s) |
+| VPS pico G11.5s | 1 GB | 30 GB SSD | 1 Gbit/s | €1.86 | €2.21 | €2.29 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-pico-g11s) |
 | VPS 500 G12.5 | 4 GB | 64 GB SSD | 2.5 Gbit/s | €6.94 | €8.26 | €8.54 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-500-g12-5) |
 | VPS 1000 G12.5 | 8 GB | 128 GB SSD | 2.5 Gbit/s | €12.18 | €14.50 | €14.99 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-1000-g12-5) |
 | VPS 1000 ARM G12.5 | 8 GB | 128 GB NVMe | 2.5 Gbit/s | €12.18 | €14.50 | €14.99 | [Specs & plan page](https://netcupgutscheine.com/en/coupons/vps-1000-arm-g12-5) |
@@ -200,8 +201,8 @@ The reusable new-customer code **`36nc17927037630`** gives a €5 discount on a 
 | VPS 1000 G12.5 | 1 Month Free | [Open plan page](https://netcupgutscheine.com/en/coupons/vps-1000-g12-5) |
 | VPS 2000 G12.5 | 1 Month Free | [Open plan page](https://netcupgutscheine.com/en/coupons/vps-2000-g12-5) |
 | VPS 4000 G12.5 | 1 Month Free | [Open plan page](https://netcupgutscheine.com/en/coupons/vps-4000-g12-5) |
-| Webhosting 2000 | 30% Lifetime Discount | [Open plan page](https://netcupgutscheine.com/en/coupons/webhosting-2000) |
-| Webhosting 4000 | 30% Lifetime Discount | [Open plan page](https://netcupgutscheine.com/en/coupons/webhosting-4000) |
+| Webhosting 2000 | 30% Monthly Discount | [Open plan page](https://netcupgutscheine.com/en/coupons/webhosting-2000) |
+| Webhosting 4000 | 30% Monthly Discount | [Open plan page](https://netcupgutscheine.com/en/coupons/webhosting-4000) |
 
 Offer labels are copied from the site catalog for orientation only. The Netcup checkout is authoritative for price, VAT, and voucher eligibility.
 
@@ -223,7 +224,7 @@ Official Netcup IPv4 addresses used for routing and latency measurement:
 
 ## Data files
 
-- `data/servers.json` — canonical active-plan catalog (18 plans) generated from the site catalog.
+- `data/servers.json` — canonical active-plan catalog (19 plans) generated from the site catalog.
 - `data/benchmarks.json` — aggregated benchmark extract (14 plans), derived from `data/servers.json`. It is not a raw log archive.
 
 ---

@@ -98,11 +98,11 @@
     }
   },
   {
-    "id": "vps-nano-g11s",
-    "name": "VPS nano G11.5s",
-    "cpu": "2 vCores (Low-Cost Node)",
-    "ramGb": 2,
-    "storage": "60 GB SSD",
+    "id": "vps-pico-g11s",
+    "name": "VPS pico G11.5s",
+    "cpu": "1 vCore (Low-Cost Node)",
+    "ramGb": 1,
+    "storage": "30 GB SSD",
     "benchmarks": {
       "geekbench6Single": 980,
       "geekbench6Multi": 1450,
