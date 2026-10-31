@@ -76,10 +76,16 @@ run() {
 }
 
 ssh_port_listening() {
-  local port_hex
+  local port_hex table
   port_hex=$(printf '%04X' "$SSH_PORT")
-  if [ -r /proc/net/tcp ]; then
-    awk -v p=":${port_hex}" '$4 == "0A" && $2 ~ p"$" { found = 1 } END { exit !found }' /proc/net/tcp
+  if [ -r /proc/net/tcp ] || [ -r /proc/net/tcp6 ]; then
+    for table in /proc/net/tcp /proc/net/tcp6; do
+      [ -r "$table" ] || continue
+      if awk -v p=":${port_hex}" '$4 == "0A" && $2 ~ p"$" { found = 1 } END { exit !found }' "$table"; then
+        return 0
+      fi
+    done
+    return 1
   elif command -v ss >/dev/null 2>&1; then
     ss -ltn 2>/dev/null | awk '{ print $4 }' | grep -Eq "[:.]${SSH_PORT}$"
   else
@@ -169,8 +175,17 @@ if [ "$WITH_DOCKER" = true ]; then
   echo "[5/5] Installing Docker Engine..."
   echo "       WARNING: Docker-published ports can bypass UFW. Review DOCKER-USER rules." >&2
   run install -m 0755 -d /etc/apt/keyrings
-  DISTRO="$(lsb_release -is | tr '[:upper:]' '[:lower:]')"
-  CODENAME="$(lsb_release -cs)"
+  if [ -r /etc/os-release ]; then
+    # shellcheck disable=SC1091
+    . /etc/os-release
+  fi
+  DISTRO="${ID:-}"
+  CODENAME="${VERSION_CODENAME:-}"
+  case "$DISTRO" in
+    debian|ubuntu) ;;
+    *) echo "Error: Docker install supports Debian and Ubuntu only (detected: ${DISTRO:-unknown})." >&2; exit 1 ;;
+  esac
+  [ -n "$CODENAME" ] || { echo "Error: could not determine the distribution codename from /etc/os-release." >&2; exit 1; }
   if [ "$DRY_RUN" = true ]; then
     echo "[dry-run] install Docker GPG key for ${DISTRO}/${CODENAME}"
     echo "[dry-run] write /etc/apt/sources.list.d/docker.list"

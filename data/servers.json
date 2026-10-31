@@ -7,13 +7,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-1000-g12-5",
     "cpu": "2 Dedicated Cores (AMD EPYC 9645)",
     "ramGb": 4,
     "storage": "64 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 10.86,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 2285,
@@ -21,8 +21,7 @@
       "fio4kMixedIops": 182500,
       "fio4kMixedMbps": 730,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-1000-g12-5"
+    }
   },
   {
     "id": "rs-1000-g12-5",
@@ -32,13 +31,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-2000-g12-5",
     "cpu": "4 Dedicated Cores (AMD EPYC 9645)",
     "ramGb": 8,
     "storage": "128 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 18.26,
     "promoLabel": "2 Months Free",
-    "voucherPrefix": "6874nc",
     "isBestseller": true,
     "benchmarks": {
       "geekbench6Single": 2290,
@@ -46,8 +45,7 @@
       "fio4kMixedIops": 187300,
       "fio4kMixedMbps": 749,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-2000-g12-5"
+    }
   },
   {
     "id": "rs-2000-g12-5",
@@ -57,13 +55,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-1000-g12-5",
     "cpu": "8 Dedicated Cores (AMD EPYC 9645)",
     "ramGb": 16,
     "storage": "256 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 34.2,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6875nc",
     "isBestseller": true,
     "benchmarks": {
       "geekbench6Single": 2295,
@@ -71,8 +69,7 @@
       "fio4kMixedIops": 192000,
       "fio4kMixedMbps": 768,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-1000-g12-5"
+    }
   },
   {
     "id": "rs-4000-g12-5",
@@ -82,13 +79,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-2000-g12-5",
     "cpu": "12 Dedicated Cores (AMD EPYC 9645)",
     "ramGb": 32,
     "storage": "512 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 65.4,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 2301,
@@ -96,8 +93,7 @@
       "fio4kMixedIops": 198500,
       "fio4kMixedMbps": 794,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-2000-g12-5"
+    }
   },
   {
     "id": "rs-8000-g12-5",
@@ -107,13 +103,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-4000-g12-5",
     "cpu": "16 Dedicated Cores (AMD EPYC 9645)",
     "ramGb": 64,
     "storage": "1 TB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 124.72,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6876nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 2305,
@@ -121,8 +117,7 @@
       "fio4kMixedIops": 204000,
       "fio4kMixedMbps": 816,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-4000-g12-5"
+    }
   },
   {
     "id": "rs-2000-vgpu-7",
@@ -132,13 +127,13 @@
     "generation": "vGPU",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-4000-vgpu-14",
     "cpu": "8 Dedicated Cores (AMD EPYC 9535) + NVIDIA H200 (7 GB VRAM)",
     "ramGb": 16,
     "storage": "512 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 115.39,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 2210,
@@ -146,8 +141,7 @@
       "fio4kMixedIops": 195000,
       "fio4kMixedMbps": 780,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-4000-vgpu-14"
+    }
   },
   {
     "id": "rs-4000-vgpu-14",
@@ -157,13 +151,13 @@
     "generation": "vGPU",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-2000-vgpu-7",
     "cpu": "12 Dedicated Cores (AMD EPYC 9535) + NVIDIA H200 (14 GB VRAM)",
     "ramGb": 32,
     "storage": "1 TB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 219.66,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 2225,
@@ -171,8 +165,7 @@
       "fio4kMixedIops": 202000,
       "fio4kMixedMbps": 808,
       "cpuStealPercent": 0
-    },
-    "alternativePlanId": "rs-2000-vgpu-7"
+    }
   },
   {
     "id": "vps-nano-g11s",
@@ -182,13 +175,13 @@
     "generation": "G11s",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "vps-500-g12-5",
     "cpu": "1–2 vCores (Low-Cost Node)",
     "ramGb": 2,
     "storage": "30 GB SSD",
     "port": "1 Gbit/s",
     "netPriceEur": 2.99,
     "promoLabel": "€5 New Customer Voucher",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 980,
@@ -196,8 +189,7 @@
       "fio4kMixedIops": 45000,
       "fio4kMixedMbps": 180,
       "cpuStealPercent": 1.8
-    },
-    "alternativePlanId": "vps-500-g12-5"
+    }
   },
   {
     "id": "vps-500-g12-5",
@@ -207,13 +199,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "vps-1000-g12-5",
     "cpu": "2 vCores (x86)",
     "ramGb": 4,
     "storage": "64 GB SSD",
     "port": "2.5 Gbit/s",
     "netPriceEur": 6.94,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 1710,
@@ -221,8 +213,7 @@
       "fio4kMixedIops": 115000,
       "fio4kMixedMbps": 460,
       "cpuStealPercent": 1.4
-    },
-    "alternativePlanId": "vps-1000-g12-5"
+    }
   },
   {
     "id": "vps-1000-g12-5",
@@ -232,13 +223,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-1000-g12-5",
     "cpu": "4 vCores (x86)",
     "ramGb": 8,
     "storage": "128 GB SSD",
     "port": "2.5 Gbit/s",
     "netPriceEur": 12.18,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6877nc",
     "isBestseller": true,
     "benchmarks": {
       "geekbench6Single": 1720,
@@ -246,8 +237,7 @@
       "fio4kMixedIops": 130000,
       "fio4kMixedMbps": 520,
       "cpuStealPercent": 1.2
-    },
-    "alternativePlanId": "rs-1000-g12-5"
+    }
   },
   {
     "id": "vps-1000-arm-g12-5",
@@ -257,13 +247,13 @@
     "generation": "G12.5 ARM64",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "vps-1000-g12-5",
     "cpu": "6 ARM64 vCores",
     "ramGb": 8,
     "storage": "256 GB NVMe",
     "port": "2.5 Gbit/s",
     "netPriceEur": 10.9,
     "promoLabel": "€5 Instant Discount",
-    "voucherPrefix": "36nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 1020,
@@ -271,8 +261,7 @@
       "fio4kMixedIops": 142000,
       "fio4kMixedMbps": 568,
       "cpuStealPercent": 0.4
-    },
-    "alternativePlanId": "vps-1000-g12-5"
+    }
   },
   {
     "id": "vps-2000-g12-5",
@@ -282,13 +271,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-2000-g12-5",
     "cpu": "8 vCores (x86)",
     "ramGb": 16,
     "storage": "256 GB SSD",
     "port": "2.5 Gbit/s",
     "netPriceEur": 22.62,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6878nc",
     "isBestseller": true,
     "benchmarks": {
       "geekbench6Single": 1740,
@@ -296,8 +285,7 @@
       "fio4kMixedIops": 138000,
       "fio4kMixedMbps": 552,
       "cpuStealPercent": 1.1
-    },
-    "alternativePlanId": "rs-2000-g12-5"
+    }
   },
   {
     "id": "vps-4000-g12-5",
@@ -307,13 +295,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-4000-g12-5",
     "cpu": "12 vCores (x86)",
     "ramGb": 32,
     "storage": "512 GB SSD",
     "port": "2.5 Gbit/s",
     "netPriceEur": 38.11,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6879nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 1755,
@@ -321,8 +309,7 @@
       "fio4kMixedIops": 145000,
       "fio4kMixedMbps": 580,
       "cpuStealPercent": 1
-    },
-    "alternativePlanId": "rs-4000-g12-5"
+    }
   },
   {
     "id": "vps-8000-g12-5",
@@ -332,13 +319,13 @@
     "generation": "G12.5",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "rs-8000-g12-5",
     "cpu": "16 vCores (x86)",
     "ramGb": 64,
     "storage": "1 TB SSD",
     "port": "2.5 Gbit/s",
     "netPriceEur": 56.39,
     "promoLabel": "1 Month Free",
-    "voucherPrefix": "6880nc",
     "isBestseller": false,
     "benchmarks": {
       "geekbench6Single": 1760,
@@ -346,8 +333,7 @@
       "fio4kMixedIops": 150000,
       "fio4kMixedMbps": 600,
       "cpuStealPercent": 0.9
-    },
-    "alternativePlanId": "rs-8000-g12-5"
+    }
   },
   {
     "id": "webhosting-2000",
@@ -357,16 +343,15 @@
     "generation": "2026",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "webhosting-4000",
     "cpu": "Shared Webhosting Cluster",
     "ramGb": 4,
     "storage": "150 GB SSD (3 Free Domains)",
     "port": "1 Gbit/s",
     "netPriceEur": 3.39,
     "promoLabel": "30% Lifetime Discount",
-    "voucherPrefix": "5207nc",
     "isBestseller": false,
-    "benchmarks": null,
-    "alternativePlanId": "webhosting-4000"
+    "benchmarks": null
   },
   {
     "id": "webhosting-4000",
@@ -376,16 +361,15 @@
     "generation": "2026",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "webhosting-8000",
     "cpu": "Shared Webhosting + SSH / Node.js",
     "ramGb": 4,
     "storage": "500 GB SSD (6 Free Domains)",
     "port": "1 Gbit/s",
     "netPriceEur": 6.81,
     "promoLabel": "30% Lifetime Discount",
-    "voucherPrefix": "5208nc",
     "isBestseller": false,
-    "benchmarks": null,
-    "alternativePlanId": "webhosting-8000"
+    "benchmarks": null
   },
   {
     "id": "webhosting-8000",
@@ -395,16 +379,15 @@
     "generation": "2026",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "webhosting-4000",
     "cpu": "Enterprise Webhosting + SSH / Node.js / Python",
     "ramGb": 8,
     "storage": "1000 GB SSD (12 Free Domains)",
     "port": "1 Gbit/s",
     "netPriceEur": 11.07,
     "promoLabel": "30% Lifetime Discount",
-    "voucherPrefix": "5209nc",
     "isBestseller": false,
-    "benchmarks": null,
-    "alternativePlanId": "webhosting-4000"
+    "benchmarks": null
   },
   {
     "id": "webhosting-2000-30prozent-rabatt-nue-1m",
@@ -414,15 +397,14 @@
     "generation": "2026 NUE 1M",
     "isArchived": false,
     "successorId": null,
+    "alternativePlanId": "webhosting-2000",
     "cpu": "Shared Webhosting Cluster",
     "ramGb": 4,
     "storage": "150 GB SSD (75 GB Web + 75 GB Mail, 3 Free Domains)",
     "port": "1 Gbit/s",
     "netPriceEur": 2.3697,
     "promoLabel": "30% Permanent Discount (1-Month Term)",
-    "voucherPrefix": "6920nc",
     "isBestseller": false,
-    "benchmarks": null,
-    "alternativePlanId": "webhosting-2000"
+    "benchmarks": null
   }
 ]
