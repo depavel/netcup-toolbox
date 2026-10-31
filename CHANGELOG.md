@@ -2,6 +2,18 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.2.4 - 2026-10-31
+
+### Changed
+
+- Added the separate VPS pico G11.5s plan (1 vCore, 1 GB RAM, 30 GB SSD,
+  EUR 2.21 gross for the 12-month term).
+- ARM, VPS pico and VPS nano are marked as voucher-ineligible, matching the
+  Netcup cart message: vouchers cannot be redeemed for VPS ARM or VPS Lite.
+- Webhosting partner labels now say "30% monthly discount" instead of
+  "lifetime", matching Netcup's "monthly price reduction" wording.
+- Contract term is included in the public `data/servers.json`.
+
 ## 0.2.3 - 2026-10-31
 
 ### Fixed
