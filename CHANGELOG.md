@@ -2,6 +2,14 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.2.5 - 2026-10-31
+
+### Changed
+
+- Webhosting promo wording aligned with Netcup's "monthly price reduction":
+  "30% Monthly Discount" instead of "permanent/lifetime".
+- The 1-month Webhosting NUE promo uses the same monthly discount wording.
+
 ## 0.2.4 - 2026-10-31
 
 ### Changed
