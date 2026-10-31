@@ -4,14 +4,14 @@ Shell scripts, aggregated YABS results, and network reference data for netcup Gm
 
 Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and benchmark datasets.
 
-**Release:** [v0.2.4](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.4) · **License:** MIT · **Scope:** 19 active plans, 14 benchmarked plans.
+**Release:** [v0.2.5](https://github.com/depavel/netcup-toolbox/releases/tag/v0.2.5) · **License:** MIT · **Scope:** 19 active plans, 14 benchmarked plans.
 
 > Review every script before running it. The DNS updater reads credentials from environment variables and never writes them to disk or logs. Use the pinned release tag below for production automation, not `main`.
 
 ## Verify the release
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.4/CHECKSUMS.txt -o CHECKSUMS.txt
+curl -fsSL https://github.com/depavel/netcup-toolbox/releases/download/v0.2.5/CHECKSUMS.txt -o CHECKSUMS.txt
 sha256sum -c CHECKSUMS.txt
 ```
 
@@ -37,7 +37,7 @@ Runs 3 ICMP probes per datacenter and prints min/avg/max latency and packet loss
 - BusyBox: `round-trip min/avg/max = ...`
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.4/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.5/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
 less /tmp/netcup-ping.sh
 bash /tmp/netcup-ping.sh
 ```
@@ -76,7 +76,7 @@ Applies performance and security defaults on a fresh Debian 12 / Ubuntu 24.04 in
 - installs Docker only with `--with-docker`.
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.4/tools/netcup-init.sh -o /tmp/netcup-init.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.2.5/tools/netcup-init.sh -o /tmp/netcup-init.sh
 less /tmp/netcup-init.sh
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --dry-run
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --yes
