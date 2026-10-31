@@ -27,7 +27,7 @@ calc_price() {
 
 if [ "${1:-}" = "--self-test" ]; then
   [ "$(calc_price 10.86 0.19)" = "12.93" ] || { echo "self-test failed: RS 500 DE" >&2; exit 1; }
-  [ "$(calc_price 6.81 0.19)" = "8.11" ] || { echo "self-test failed: Webhosting 4000 DE" >&2; exit 1; }
+  [ "$(calc_price 6.8067 0.19)" = "8.10" ] || { echo "self-test failed: Webhosting 4000 DE" >&2; exit 1; }
   [ "$(calc_price 10.86 0)" = "10.86" ] || { echo "self-test failed: 0% VAT" >&2; exit 1; }
   echo "self-test OK"
   exit 0
@@ -46,8 +46,8 @@ PLANS=(
   "RS 2000 G12.5|34.2"
   "RS 4000 G12.5|65.4"
   "RS 8000 G12.5|124.72"
-  "RS 2000 vGPU 7|115.39"
-  "RS 4000 vGPU 14|219.66"
+  "RS 2000 vGPU 7|102.3277"
+  "RS 4000 vGPU 14|195.3193"
   "VPS piko / nano G11s|2.99"
   "VPS 500 G12.5|6.94"
   "VPS 1000 G12.5|12.18"
@@ -55,9 +55,9 @@ PLANS=(
   "VPS 2000 G12.5|22.62"
   "VPS 4000 G12.5|38.11"
   "VPS 8000 G12.5|56.39"
-  "Webhosting 2000|3.39"
-  "Webhosting 4000|6.81"
-  "Webhosting 8000|11.07"
+  "Webhosting 2000|3.3865"
+  "Webhosting 4000|6.8067"
+  "Webhosting 8000|11.0672"
   "Webhosting 2000 30Prozent Rabatt NUE 1M|2.3697"
 )
 
