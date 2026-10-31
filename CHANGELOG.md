@@ -2,6 +2,16 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.2.3 - 2026-10-31
+
+### Fixed
+
+- Corrected VPS 1000 ARM G12.5 to 4 ARM64 vCores, 128 GB NVMe and the
+  official EUR 14.50 gross base.
+- Replaced the combined "piko / nano" row with the official VPS nano G11.5s
+  (2 vCores, 2 GB RAM, 60 GB SSD, EUR 3.69 gross for the 6-month term).
+- Added the minimum contract term to `data/servers.json`.
+
 ## 0.2.2 - 2026-10-31
 
 ### Fixed

@@ -99,10 +99,10 @@
   },
   {
     "id": "vps-nano-g11s",
-    "name": "VPS piko / nano G11s",
-    "cpu": "1–2 vCores (Low-Cost Node)",
+    "name": "VPS nano G11.5s",
+    "cpu": "2 vCores (Low-Cost Node)",
     "ramGb": 2,
-    "storage": "30 GB SSD",
+    "storage": "60 GB SSD",
     "benchmarks": {
       "geekbench6Single": 980,
       "geekbench6Multi": 1450,
@@ -142,9 +142,9 @@
   {
     "id": "vps-1000-arm-g12-5",
     "name": "VPS 1000 ARM G12.5",
-    "cpu": "6 ARM64 vCores",
+    "cpu": "4 ARM64 vCores",
     "ramGb": 8,
-    "storage": "256 GB NVMe",
+    "storage": "128 GB NVMe",
     "benchmarks": {
       "geekbench6Single": 1020,
       "geekbench6Multi": 4980,
