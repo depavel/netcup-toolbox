@@ -2,6 +2,16 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.2.1 - 2026-10-31
+
+### Fixed
+
+- `netcup-init.sh` detects an IPv6-only SSH listener via `/proc/net/tcp6` and
+  reads the distribution/codename from `/etc/os-release` instead of relying on
+  `lsb_release`.
+- The public `data/servers.json` no longer contains voucher series prefixes;
+  only the reusable universal code is published.
+
 ## 0.2.0 - 2026-10-31
 
 ### Fixed
