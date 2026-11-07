@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest a new Netcup tool or an improvement to an existing one.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the operational problem first, then the proposed tool. This repository prefers small, auditable shell scripts over large frameworks.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What Netcup task is painful or error-prone today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What should the script do? Include the API (CCP or SCP REST), inputs, outputs, and safety behavior.
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - Read-only
+        - Mutating (requires explicit confirmation)
+        - Destructive (requires typed confirmation)
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing tools, workarounds, or why a shell script is the right fit.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This request does not require publishing single-use voucher codes.
+          required: true
+        - label: This request can work without a browser session or CAPTCHA bypass.
+          required: true
+        - label: I understand that SCP SOAP is retired and new server automation must use the SCP REST API.
+          required: true

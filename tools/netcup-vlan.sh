@@ -9,11 +9,14 @@
 # packets while small pings still succeed.
 
 set -euo pipefail
+LC_ALL=C
+export LC_ALL
 
+SCRIPT_VERSION="0.3.0"
 IFACE="eth1"
 IP_CIDR="10.0.10.1/24"
 MTU="1500"
-MODE="netplan"
+MODE="auto"
 APPLY=false
 
 usage() {
@@ -24,8 +27,9 @@ Options:
   -i, --interface <iface>   Interface name from `ip a` (default: eth1)
   -a, --ip <cidr>           Private IPv4 address with prefix (default: 10.0.10.1/24)
   -m, --mtu <size>          MTU size; Netcup Cloud vLAN supports 1500 only
-  -f, --mode <mode>         Config format: netplan or debian (default: netplan)
+  -f, --mode <mode>         Config format: auto, netplan, or debian (default: auto)
   --apply                   Write the config and apply it (requires root)
+  --version                 Print the script version
   -h, --help                Show this help message
 
 Netcup Cloud vLAN is a Layer 2 network within one datacenter. It does not
@@ -39,7 +43,7 @@ fail() {
 }
 
 is_ipv4() {
-  local ip="$1" octet
+  local ip="$1" octet octets
   [[ "$ip" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]] || return 1
   IFS=. read -r -a octets <<< "$ip"
   for octet in "${octets[@]}"; do
@@ -71,13 +75,14 @@ while [ "$#" -gt 0 ]; do
       [ "$#" -ge 2 ] || fail "$1 requires a value"
       MODE="$2"; shift 2 ;;
     --apply) APPLY=true; shift ;;
+    --version) echo "$SCRIPT_VERSION"; exit 0 ;;
     -h|--help) usage; exit 0 ;;
     *) fail "unknown option: $1" ;;
   esac
 done
 
 [[ "$IFACE" =~ ^[a-zA-Z0-9_.:-]{1,15}$ ]] || fail "invalid interface name: $IFACE"
-[[ "$MODE" == "netplan" || "$MODE" == "debian" ]] || fail "mode must be netplan or debian"
+[[ "$MODE" == "auto" || "$MODE" == "netplan" || "$MODE" == "debian" ]] || fail "mode must be auto, netplan, or debian"
 [[ "$MTU" == "1500" ]] || fail "Netcup Cloud vLAN supports MTU 1500 only; jumbo frames are not supported"
 [[ "$IP_CIDR" == */* ]] || fail "IP must include a prefix, e.g. 10.0.10.1/24"
 
@@ -90,6 +95,27 @@ is_private_ipv4 "$IP_ADDR" || fail "use an RFC1918 private address (10/8, 172.16
 
 if [ "$APPLY" = true ] && [ "$(id -u)" -ne 0 ]; then
   fail "root privileges are required for --apply"
+fi
+
+if [ "$MODE" = "auto" ]; then
+  if command -v netplan >/dev/null 2>&1; then
+    MODE="netplan"
+  elif [ -d /etc/network/interfaces.d ] || [ -f /etc/network/interfaces ]; then
+    MODE="debian"
+  else
+    MODE="netplan"
+  fi
+  echo "Detected network stack: $MODE" >&2
+fi
+
+if [ "$APPLY" = true ]; then
+  command -v ip >/dev/null 2>&1 || fail "'ip' is required for --apply"
+  ip link show "$IFACE" >/dev/null 2>&1 || fail "interface $IFACE does not exist; check 'ip a'"
+  if [ "$MODE" = "netplan" ]; then
+    command -v netplan >/dev/null 2>&1 || fail "netplan is not installed; use --mode debian or install netplan"
+  else
+    command -v ifup >/dev/null 2>&1 || fail "ifup is not installed; use --mode netplan or install ifupdown"
+  fi
 fi
 
 if [ "$MODE" = "netplan" ]; then
