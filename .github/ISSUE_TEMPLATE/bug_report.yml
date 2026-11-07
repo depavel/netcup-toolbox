@@ -20,7 +20,7 @@ body:
     attributes:
       label: Release or commit
       description: The pinned release tag or commit SHA.
-      placeholder: v0.3.0
+      placeholder: v0.4.0
     validations:
       required: true
   - type: input

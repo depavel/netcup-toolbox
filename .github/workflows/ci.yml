@@ -34,6 +34,8 @@ jobs:
           bash tools/netcup-calc.sh --self-test
           bash tools/netcup-rdns.sh --self-test
           bash tools/netcup-snapshot.sh --self-test
+          bash tools/netcup-mail-check.sh --self-test
+          bash tools/netcup-exporter.sh --self-test
 
       - name: Help smoke tests
         run: |
@@ -42,6 +44,8 @@ jobs:
           bash tools/netcup-init.sh --help
           bash tools/netcup-rdns.sh --help
           bash tools/netcup-snapshot.sh --help
+          bash tools/netcup-mail-check.sh --help
+          bash tools/netcup-exporter.sh --help
           bash tools/netcup-calc.sh --help
 
       - name: JSON validation
