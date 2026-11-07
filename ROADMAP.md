@@ -1,6 +1,6 @@
 # Roadmap
 
-Current release: [v0.3.0](https://github.com/depavel/netcup-toolbox/releases/tag/v0.3.0).
+Current release: [v0.4.0](https://github.com/depavel/netcup-toolbox/releases/tag/v0.4.0).
 
 ## Current tools
 - `tools/netcup-ping.sh`: ICMP latency test for the 5 official Netcup test IPs; iputils and BusyBox parsing.
@@ -9,6 +9,8 @@ Current release: [v0.3.0](https://github.com/depavel/netcup-toolbox/releases/tag
 - `tools/netcup-dns-sync.sh`: DDNS updater for one existing A record via the Netcup CCP JSON API.
 - `tools/netcup-rdns.sh`: IPv4/IPv6 PTR manager via the SCP REST API and OAuth2 device flow.
 - `tools/netcup-snapshot.sh`: SCP snapshot list/create/delete/restore/export with guarded destructive actions.
+- `tools/netcup-mail-check.sh`: MX, SPF, DMARC, DKIM, PTR, and port 25 checks.
+- `tools/netcup-exporter.sh`: Prometheus textfile metrics for host health and Netcup latency.
 - `tools/netcup-calc.sh`: terminal VAT and billing calculator for all active plans; ceiling rounding.
 - `data/servers.json`: active-plan catalog generated from the site catalog, including availability.
 - `data/benchmarks.json`: aggregated YABS extract derived from `data/servers.json`.
@@ -24,9 +26,9 @@ Current release: [v0.3.0](https://github.com/depavel/netcup-toolbox/releases/tag
 - [ ] Issue/PR templates, Dependabot, release workflow, and a Debian/Ubuntu/Alpine CI matrix.
 
 ## v0.4.0 (planned)
+- [x] `tools/netcup-mail-check.sh`: MX, SPF, DKIM, DMARC, PTR, and port 25 checks.
 - [ ] `tools/netcup-dns.sh`: full-zone export, diff, and restore via the CCP API.
-- [ ] `tools/netcup-mail-check.sh`: MX, SPF, DKIM, DMARC, PTR, port 25, and DNSBL checks.
-- [ ] `tools/netcup-exporter.sh`: Prometheus textfile metrics for server status, snapshot age, latency, and CPU steal.
+- [x] `tools/netcup-exporter.sh`: Prometheus textfile metrics for host health, BBR, CPU steal, and Netcup latency.
 - [ ] `tools/netcup-vlan.sh` and `tools/netcup-init.sh` hardening (network-stack detection, rollback, SSH keys, fail2ban).
 - [ ] JSON Schema for `data/*.json` and a scheduled link check.
 

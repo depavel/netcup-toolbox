@@ -6,7 +6,7 @@ Shell scripts, aggregated YABS results, and network reference data for netcup Gm
 
 Companion repository for [netcupgutscheine.com](https://netcupgutscheine.com/en/tools) — open-source CLI utilities, system configs, and benchmark datasets.
 
-**Release:** [v0.3.0](https://github.com/depavel/netcup-toolbox/releases/tag/v0.3.0) · **License:** MIT · **Scope:** 19 active plans, 14 benchmarked plans.
+**Release:** [v0.4.0](https://github.com/depavel/netcup-toolbox/releases/tag/v0.4.0) · **License:** MIT · **Scope:** 19 active plans, 14 benchmarked plans.
 
 > Review every script before running it. The DNS updater reads credentials from environment variables and never writes them to disk or logs. Use the pinned release tag below for production automation, not `main`.
 
@@ -23,7 +23,7 @@ Der wiederverwendbare €5-Neukunden-Code steht im Abschnitt **Vouchers**. Einma
 ## Verify the release
 
 ```bash
-tag=v0.3.0
+tag=v0.4.0
 curl -fsSLO "https://github.com/depavel/netcup-toolbox/releases/download/${tag}/netcup-toolbox-${tag}.tar.gz"
 curl -fsSLO "https://github.com/depavel/netcup-toolbox/releases/download/${tag}/netcup-toolbox-${tag}.tar.gz.sha256"
 sha256sum -c "netcup-toolbox-${tag}.tar.gz.sha256"
@@ -46,6 +46,8 @@ Documentation: [Authentication](docs/AUTH.md) · [Data files](docs/DATA.md) · [
 | `tools/netcup-dns-sync.sh` | DDNS updater for one existing A record via the CCP JSON API | `bash tools/netcup-dns-sync.sh` | [DDNS guide](https://netcupgutscheine.com/en/tools#ddns) |
 | `tools/netcup-rdns.sh` | Get, set, or delete IPv4/IPv6 PTR records via the SCP REST API; OAuth2 device flow | `bash tools/netcup-rdns.sh get 203.0.113.10` | [Mail & DNS guides](https://netcupgutscheine.com/en/guides/mail) |
 | `tools/netcup-snapshot.sh` | List, create, delete, restore, or export SCP snapshots; guarded destructive actions | `bash tools/netcup-snapshot.sh servers` | [Backup guide](https://netcupgutscheine.com/en/guides/backup) |
+| `tools/netcup-mail-check.sh` | MX, SPF, DMARC, DKIM, PTR, and outbound port 25 checks | `bash tools/netcup-mail-check.sh example.com` | [Mail guide](https://netcupgutscheine.com/en/guides/mail) |
+| `tools/netcup-exporter.sh` | Prometheus textfile metrics for uptime, load, memory, disk, BBR, CPU steal, and latency | `bash tools/netcup-exporter.sh --textfile /var/lib/node_exporter/textfile/netcup.prom` | [Tools hub](https://netcupgutscheine.com/en/tools) |
 | `tools/netcup-calc.sh` | VAT and billing calculator for all active plans; ceiling rounding | `bash tools/netcup-calc.sh` | [VAT calculator](https://netcupgutscheine.com/en/tools#calc) |
 
 ---
@@ -58,7 +60,7 @@ Runs 3 ICMP probes per datacenter by default and prints min/avg/max latency and 
 - BusyBox: `round-trip min/avg/max = ...`
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.3.0/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.4.0/tools/netcup-ping.sh -o /tmp/netcup-ping.sh
 less /tmp/netcup-ping.sh
 bash /tmp/netcup-ping.sh
 ```
@@ -98,7 +100,7 @@ Applies performance and security defaults on a fresh Debian 12 / Ubuntu 24.04 in
 - installs Docker only with `--with-docker`.
 
 ```bash
-curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.3.0/tools/netcup-init.sh -o /tmp/netcup-init.sh
+curl -fsSL https://github.com/depavel/netcup-toolbox/raw/v0.4.0/tools/netcup-init.sh -o /tmp/netcup-init.sh
 less /tmp/netcup-init.sh
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --dry-run
 sudo bash /tmp/netcup-init.sh --ssh-port 22 --yes
@@ -167,6 +169,33 @@ bash tools/netcup-snapshot.sh restore 123456 pre-upgrade --yes --wait
 ```
 
 Offline snapshots may require `--disk <name>`; use `servers` or `list` to inspect the server and its snapshots. Export requires the server to be shut off.
+
+---
+
+## Mail DNS and port 25 (`netcup-mail-check.sh`)
+
+Checks MX, SPF, DMARC, DKIM presence, A/AAAA, PTR, and outbound TCP/25 reachability. It is a presence and reachability check, not a full policy evaluator.
+
+```bash
+bash tools/netcup-mail-check.sh example.com
+bash tools/netcup-mail-check.sh example.com --selector mail --json
+bash tools/netcup-mail-check.sh example.com --no-port-check
+```
+
+Requires `dig`. A port 25 check from a residential ISP may report the ISP block rather than the destination. Run it from a server with outbound port 25 for a meaningful result.
+
+---
+
+## Prometheus exporter (`netcup-exporter.sh`)
+
+Writes a Prometheus textfile with local host metrics and one-packet ICMP latency to all 5 Netcup test IPs. It is designed for `node_exporter --collector.textfile.directory`, cron, or a systemd timer.
+
+```bash
+bash tools/netcup-exporter.sh --textfile /var/lib/node_exporter/textfile/netcup.prom
+bash tools/netcup-exporter.sh --no-latency
+```
+
+Missing measurements are omitted or reported with a `*_probe_success 0` gauge; they are never converted to a fake zero. No Netcup credentials are required.
 
 ---
 

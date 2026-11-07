@@ -18,7 +18,7 @@ From the private repository:
 
 ```bash
 npm run export:satellite
-SATELLITE_RELEASE_TAG=v0.3.0 npm run sync:satellite
+SATELLITE_RELEASE_TAG=v0.4.0 npm run sync:satellite
 ```
 
 The sync script rebuilds all generated files, commits them, pushes `main`, and
@@ -29,7 +29,7 @@ and attaches all three assets to the GitHub release.
 ## Verification
 
 ```bash
-tag=v0.3.0
+tag=v0.4.0
 curl -fsSLO "https://github.com/depavel/netcup-toolbox/releases/download/${tag}/netcup-toolbox-${tag}.tar.gz"
 curl -fsSLO "https://github.com/depavel/netcup-toolbox/releases/download/${tag}/netcup-toolbox-${tag}.tar.gz.sha256"
 sha256sum -c "netcup-toolbox-${tag}.tar.gz.sha256"

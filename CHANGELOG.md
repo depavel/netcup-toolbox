@@ -2,6 +2,15 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.4.0 - 2026-11-08
+
+### Added
+
+- `tools/netcup-mail-check.sh`: MX, SPF, DMARC, DKIM, PTR, and port 25 checks
+  with human and JSON output.
+- `tools/netcup-exporter.sh`: Prometheus textfile metrics for uptime, load,
+  memory, disk, BBR, CPU steal, and Netcup latency.
+
 ## 0.3.0 - 2026-11-07
 
 ### Added
