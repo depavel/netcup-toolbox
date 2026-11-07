@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a reproducible problem with a netcup-toolbox script or dataset.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Do not include API keys, customer numbers, passwords, tokens, private IP addresses, or private hostnames. Security issues must use the private process in SECURITY.md.
+  - type: input
+    id: script
+    attributes:
+      label: Script or data file
+      description: Which script or file is affected?
+      placeholder: tools/netcup-ping.sh
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Release or commit
+      description: The pinned release tag or commit SHA.
+      placeholder: v0.3.0
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: Distribution and version, or container image.
+      placeholder: Debian 12 / Ubuntu 24.04 / Alpine 3.20
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: The exact command you ran.
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and logs
+      description: Remove all secrets and private infrastructure details.
+      render: text
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I ran the script's `--help` and `--self-test` where available.
+          required: true
+        - label: I removed credentials, customer numbers, tokens, and private addresses from this report.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

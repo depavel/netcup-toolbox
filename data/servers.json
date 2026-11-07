@@ -23,7 +23,9 @@
       "fio4kMixedIops": 182500,
       "fio4kMixedMbps": 730,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-1000-g12-5",
@@ -49,7 +51,9 @@
       "fio4kMixedIops": 187300,
       "fio4kMixedMbps": 749,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-2000-g12-5",
@@ -75,7 +79,9 @@
       "fio4kMixedIops": 192000,
       "fio4kMixedMbps": 768,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-4000-g12-5",
@@ -101,7 +107,9 @@
       "fio4kMixedIops": 198500,
       "fio4kMixedMbps": 794,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-8000-g12-5",
@@ -127,7 +135,9 @@
       "fio4kMixedIops": 204000,
       "fio4kMixedMbps": 816,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-2000-vgpu-7",
@@ -153,7 +163,9 @@
       "fio4kMixedIops": 195000,
       "fio4kMixedMbps": 780,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "sold-out",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "rs-4000-vgpu-14",
@@ -179,7 +191,9 @@
       "fio4kMixedIops": 202000,
       "fio4kMixedMbps": 808,
       "cpuStealPercent": 0
-    }
+    },
+    "availability": "sold-out",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-nano-g11s",
@@ -199,7 +213,9 @@
     "netPriceEur": 3.1008,
     "promoLabel": "Standard price",
     "isBestseller": false,
-    "benchmarks": null
+    "benchmarks": null,
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-pico-g11s",
@@ -225,7 +241,9 @@
       "fio4kMixedIops": 45000,
       "fio4kMixedMbps": 180,
       "cpuStealPercent": 1.8
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-500-g12-5",
@@ -251,7 +269,9 @@
       "fio4kMixedIops": 115000,
       "fio4kMixedMbps": 460,
       "cpuStealPercent": 1.4
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-1000-g12-5",
@@ -277,7 +297,9 @@
       "fio4kMixedIops": 130000,
       "fio4kMixedMbps": 520,
       "cpuStealPercent": 1.2
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-1000-arm-g12-5",
@@ -303,7 +325,9 @@
       "fio4kMixedIops": 142000,
       "fio4kMixedMbps": 568,
       "cpuStealPercent": 0.4
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-2000-g12-5",
@@ -329,7 +353,9 @@
       "fio4kMixedIops": 138000,
       "fio4kMixedMbps": 552,
       "cpuStealPercent": 1.1
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-4000-g12-5",
@@ -355,7 +381,9 @@
       "fio4kMixedIops": 145000,
       "fio4kMixedMbps": 580,
       "cpuStealPercent": 1
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "vps-8000-g12-5",
@@ -381,7 +409,9 @@
       "fio4kMixedIops": 150000,
       "fio4kMixedMbps": 600,
       "cpuStealPercent": 0.9
-    }
+    },
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "webhosting-2000",
@@ -401,7 +431,9 @@
     "netPriceEur": 3.3865,
     "promoLabel": "30% Monthly Discount",
     "isBestseller": false,
-    "benchmarks": null
+    "benchmarks": null,
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "webhosting-4000",
@@ -421,7 +453,9 @@
     "netPriceEur": 6.8067,
     "promoLabel": "30% Monthly Discount",
     "isBestseller": false,
-    "benchmarks": null
+    "benchmarks": null,
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "webhosting-8000",
@@ -441,7 +475,9 @@
     "netPriceEur": 11.0672,
     "promoLabel": "30% Monthly Discount",
     "isBestseller": false,
-    "benchmarks": null
+    "benchmarks": null,
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   },
   {
     "id": "webhosting-2000-30prozent-rabatt-nue-1m",
@@ -461,6 +497,8 @@
     "netPriceEur": 2.3697,
     "promoLabel": "30% Monthly Discount (1-Month Term)",
     "isBestseller": false,
-    "benchmarks": null
+    "benchmarks": null,
+    "availability": "available",
+    "availabilityCheckedAt": "2026-11-03"
   }
 ]

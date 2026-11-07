@@ -16,6 +16,7 @@ WITH_DOCKER=false
 DRY_RUN=false
 ASSUME_YES=false
 FULL_UPGRADE=false
+FORCE=false
 SSH_PORT=22
 
 usage() {
@@ -28,6 +29,7 @@ Options:
   --full-upgrade      Run apt-get upgrade -y (can install a new kernel)
   --dry-run           Print actions without changing the system
   --yes, -y           Do not ask for confirmation before enabling UFW
+  --force             Enable UFW even if the SSH listener cannot be verified
   -h, --help          Show this help message
 
 Security note:
@@ -47,6 +49,7 @@ while [ "$#" -gt 0 ]; do
     --full-upgrade) FULL_UPGRADE=true; shift ;;
     --dry-run) DRY_RUN=true; shift ;;
     --yes|-y) ASSUME_YES=true; shift ;;
+    --force) FORCE=true; shift ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Error: unknown option: $1" >&2; usage; exit 1 ;;
   esac
@@ -89,14 +92,33 @@ ssh_port_listening() {
   elif command -v ss >/dev/null 2>&1; then
     ss -ltn 2>/dev/null | awk '{ print $4 }' | grep -Eq "[:.]${SSH_PORT}$"
   else
-    return 0
+    echo "Error: cannot verify the SSH listener: /proc/net/tcp and ss are unavailable." >&2
+    return 2
   fi
 }
 
-if [ "$DRY_RUN" != true ] && ! ssh_port_listening; then
-  echo "Error: nothing is listening on TCP port ${SSH_PORT}." >&2
-  echo "Refusing to enable UFW and lock you out. Start sshd on that port or pass --ssh-port." >&2
-  exit 1
+if [ "$DRY_RUN" != true ]; then
+  set +e
+  ssh_port_listening
+  SSH_CHECK=$?
+  set -e
+
+  if [ "$SSH_CHECK" -eq 2 ]; then
+    if [ "$FORCE" = true ]; then
+      echo "Warning: SSH listener could not be verified; continuing because --force was passed." >&2
+    else
+      echo "Refusing to enable UFW because the SSH listener cannot be verified. Pass --force only if you have out-of-band console access." >&2
+      exit 1
+    fi
+  elif [ "$SSH_CHECK" -ne 0 ]; then
+    if [ "$FORCE" = true ]; then
+      echo "Warning: nothing is listening on TCP port ${SSH_PORT}; continuing because --force was passed." >&2
+    else
+      echo "Error: nothing is listening on TCP port ${SSH_PORT}." >&2
+      echo "Refusing to enable UFW and lock you out. Start sshd on that port or pass --ssh-port." >&2
+      exit 1
+    fi
+  fi
 fi
 
 echo "[1/5] Updating package cache and installing baseline packages..."

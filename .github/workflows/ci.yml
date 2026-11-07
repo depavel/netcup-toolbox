@@ -32,12 +32,28 @@ jobs:
         run: |
           bash tools/netcup-ping.sh --self-test
           bash tools/netcup-calc.sh --self-test
+          bash tools/netcup-rdns.sh --self-test
+          bash tools/netcup-snapshot.sh --self-test
+
+      - name: Help smoke tests
+        run: |
+          bash tools/netcup-ping.sh --help
+          bash tools/netcup-vlan.sh --help
+          bash tools/netcup-init.sh --help
+          bash tools/netcup-rdns.sh --help
+          bash tools/netcup-snapshot.sh --help
+          bash tools/netcup-calc.sh --help
 
       - name: JSON validation
         run: |
           for file in data/*.json; do
             jq empty "$file"
           done
+
+      - name: Data metadata
+        run: |
+          jq -e '.schemaVersion == 1 and .planCount > 0 and .benchmarkCount > 0' data/meta.json
+          jq -e 'length == 5' data/datacenters.json
 
       - name: Verify release checksums
         run: sha256sum -c CHECKSUMS.txt

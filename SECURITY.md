@@ -4,7 +4,8 @@
 
 | Version | Supported |
 |---|---|
-| `v0.2.x` | Yes |
+| `v0.3.x` | Yes |
+| `v0.2.x` | Security fixes only |
 | `v0.1.x` | No |
 
 ## Reporting a vulnerability
@@ -34,3 +35,8 @@ exposing containers.
 `netcup-dns-sync.sh` reads credentials from environment variables. It never
 writes them to disk or logs, but environment variables can be visible to
 privileged local users. Run it as a dedicated user where possible.
+
+SCP REST tools use an OAuth2 refresh token. Treat it as a password: store it
+with mode `600` under `~/.config/netcup-toolbox/` or pass it through a secret
+manager, never in a repository, issue, screenshot, or CI log. Revoke a leaked
+token in the SCP account console and run the device flow again.

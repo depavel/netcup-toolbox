@@ -2,6 +2,35 @@
 
 All notable changes to `netcup-toolbox` are documented here.
 
+## 0.3.0 - 2026-11-07
+
+### Added
+
+- `tools/netcup-rdns.sh`: IPv4/IPv6 PTR management via the SCP REST API, including
+  OAuth2 device-flow login, token rotation, `--dry-run`, and `--json`.
+- `tools/netcup-snapshot.sh`: SCP snapshot list/create/delete/restore/export with
+  task polling, `--dry-run`, and explicit `--yes` guards for destructive actions.
+- `tools/netcup-ping.sh`: `--json`, `--csv`, `--count`, `--timeout`,
+  `--no-color`, and `--fail-on-timeout` for automation.
+- `tools/netcup-calc.sh`: `--json`, `--plan`, `--help`, and `--version`;
+  locale-independent decimal formatting.
+- `tools/netcup-init.sh`: `--force` escape hatch when the SSH listener cannot be
+  verified; the default now fails closed instead of enabling UFW blindly.
+- `tools/netcup-vlan.sh`: auto-detects netplan vs ifupdown, validates the
+  interface and the required network tools before `--apply`.
+- `data/datacenters.json` with official test IPs, regions, and verification dates.
+- `data/meta.json` with schema version, generation timestamp, availability date, and dataset counts.
+- Release archives (`netcup-toolbox-<tag>.tar.gz`) with detached checksums, built by the tag workflow.
+- German Black Week / Advent Calendar 2026 section in `README.md`.
+- Issue/PR templates, Dependabot, and a release workflow are included. A Debian/Ubuntu/Alpine CI matrix is planned.
+
+### Fixed
+
+- Public catalog now includes `availability` and `availabilityCheckedAt`; sold-out GPU plans are labelled and no longer receive a claim CTA.
+- `README.md` release verification now uses the release archive, so `sha256sum -c` works outside a full checkout.
+- The public README no longer calls official test IPs "looking glass nodes".
+- Added the missing 20% AT gross price column.
+
 ## 0.2.5 - 2026-10-31
 
 ### Changed
